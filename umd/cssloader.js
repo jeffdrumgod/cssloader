@@ -1,3 +1,9 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.cssloader = factory());
+}(this, (function () { 'use strict';
+
 const cssloader = path => {
 	/* eslint-disable consistent-return */
 	const promise = new Promise((resolve, reject) => {
@@ -51,4 +57,6 @@ const cssloader = path => {
 	return promise;
 };
 
-export default cssloader;
+return cssloader;
+
+})));

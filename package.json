@@ -1,10 +1,13 @@
 {
   "name": "cssloader",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Simple Asyncronous CSS loader and dependency manager, with promises.",
-  "main": "loadCSS.js",
+  "main": "src/cssloader.js",
+  "jsnext:main": "es/cssloader.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "npm run build:umd && npm run build:umd:min",
+    "build:umd": "cross-env BABEL_ENV=es rollup -c -i src/cssloader.js -o umd/cssloader.js",
+    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i src/cssloader.js -o umd/cssloader.min.js",
     "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +31,17 @@
   "homepage": "https://github.com/jeffdrumgod/cssloader#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-plugin-transform-es2015-modules-amd": "6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs-simple": "6.7.4",
+    "babel-plugin-transform-es2015-modules-umd": "6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "5.0.0",
+    "rollup": "0.41.6",
+    "rollup-plugin-babel": "2.7.1",
+    "rollup-plugin-node-resolve": "3.0.0",
+    "rollup-plugin-replace": "1.1.1",
+    "rollup-plugin-uglify": "1.0.2",
+    "uglify-js": "3.0.4",
+    "uglify-js-harmony": "2.7.7"
   }
 }
