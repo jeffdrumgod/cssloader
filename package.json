@@ -1,6 +1,6 @@
 {
   "name": "cssloader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Asyncronous CSS loader and dependency manager, with promises.",
   "main": "loadCSS.js",
   "scripts": {
