@@ -12,8 +12,9 @@ const cssloader = path => {
 		}
 
 		const ss = document.styleSheets;
+		const reg = new RegExp(path.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'));
 		for (let i = 0, max = ss.length; i < max; i += 1) {
-			if ((ss[i].href || '').match(path.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\\\$&'))) {
+			if ((ss[i].href || '').match(reg)) {
 				return resolve(path);
 			}
 		}
